@@ -1,16 +1,8 @@
+//local variables
 var numOfImages = 3;
 var background = 0;
 
-function checkList (element, list)
-{
-    let margin = 30;
-    for(let i = 0;i<list.length;i++){
-        if(element < (list[i] + margin) || element > (list[i] - margin))
-            return true;
-    }
-    return false;
-}
-
+//insert random image into both squares (right and left)
 function insert(idName1, idName2){
     var left = Math.floor((Math.random() * 150) + 1)+"px";
     var top = Math.floor((Math.random() * 150) + 1)+"px";
@@ -19,12 +11,14 @@ function insert(idName1, idName2){
     insertion(idName2, left, top, imgName);
 }
 
+//generate string reference to random image
 function randImage() {
     let r = Math.floor(Math.random() * 3) + 1;
     let retString = "e" + r +".png";
     return retString;
 }
 
+//insert individual image (called in insert() function)
 function insertion(idName, left, top, imgName)
 {
     var imgDestination = document.getElementById(idName);
@@ -41,6 +35,7 @@ function insertion(idName, left, top, imgName)
     imgAdded.onclick = incorrectClick;
 }
 
+//insert function for correct answer image (difference is onClick)
 function uniqueInsertion(idName)
 {
     var imgDestination = document.getElementById(idName);
@@ -59,11 +54,13 @@ function uniqueInsertion(idName)
     imgAdded.onclick = correctClick;
 }
 
+// onClick for repeated images
 function incorrectClick(){
     let message = "Level: " + (numOfImages - 2) + " Try Again!";
     document.getElementById("message").innerHTML = message;
 }
 
+// onClick for correct answer
 function correctClick() {
     numOfImages ++;
     let message = "Level: " + (numOfImages - 2);
@@ -76,6 +73,7 @@ function correctClick() {
     newGame();
 }
 
+//create new game with incremented number of images
 function newGame() {
     for(let i=0; i<numOfImages;i++) {
         insert("gameLeft", "gameRight");
@@ -88,6 +86,7 @@ function newGame() {
     toggleBackground();
 }
 
+//toggle background color between yellow and red
 function toggleBackground() {
     let game = document.getElementById("game");
     if(background == 0){
