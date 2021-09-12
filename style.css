@@ -13,6 +13,14 @@ html {
   height: 100%;
 }
 
+.square {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border: 3px solid grey;
+  border-radius: 3px;
+}
+
 #game {
   background-color: blue;
 }
@@ -43,10 +51,10 @@ html {
 
 /* creating components in the center of their parent */
 .centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: center;
+  /* top: 25%;
+  left: 25%; */
+  /* transform: translate(-25%, -25%); */
 }
 
 /* formatting the title text */
