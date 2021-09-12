@@ -24,7 +24,7 @@ function insertion(idName, left, top, imgName)
     imgAdded.style.left = left;
 
     imgAdded.id = "falseImg";
-    imgAdded.onclick="incorrectClick()";
+    imgAdded.onclick = incorrectClick;
 }
 
 function uniqueInsertion(idName)
@@ -45,15 +45,38 @@ function uniqueInsertion(idName)
     imgAdded.style.left = Math.floor((Math.random() * 150) + 1)+"px";
 
     imgAdded.id = "correctImg";
-    imgAdded.onclick="correctClick()";
+    imgAdded.onclick = correctClick;
 }
 
 function incorrectClick(){
     document.getElementById("message").innerHTML = "Try Again!";
 }
 
+function correctClick() {
+    numOfImages ++;
+    document.getElementById("message").innerHTML = "Correct!";
+    newGame();
+}
+
+function newGame() {
+    // delete all images
+    document.getElementById("gameLeft").innerHTML = "";
+    document.getElementById("gameRight").innerHTML = "";
+    
+    for(let i=0; i<numOfImages;i++) {
+        insert("gameLeft", "gameRight");
+    }
+    var r = Math.round(Math.random());
+    if (r)
+        uniqueInsertion("gameLeft");
+    else
+        uniqueInsertion("gameRight")
+}
+
+var numOfImages = 3;
+
 window.onload = function() {
-    for (let i = 0; i < 3; i++) { 
+    for (let i = 0; i < numOfImages; i++) { 
         insert("gameLeft", "gameRight");
     }
     var r = Math.round(Math.random());
