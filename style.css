@@ -63,6 +63,11 @@ html {
   text-align: center;
 }
 
+.message {
+  color: white;
+  text-align: center;
+  top: 20;
+}
 
 
 /* setting default format for the page */
