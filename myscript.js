@@ -1,6 +1,11 @@
 //local variables
 var numOfImages = 3;
 var background = 0;
+var levelNum = 1;
+var dificulty = 0;
+function sliderChange(value) {
+    dificulty = value;
+}
 //insert random image into both squares (right and left)
 function insert(idName1, idName2) {
     var left = Math.floor((Math.random() * 150) + 1) + "px";
@@ -12,8 +17,7 @@ function insert(idName1, idName2) {
 //generate string reference to random image
 function randImage() {
     var r = Math.floor(Math.random() * 3) + 1;
-    var retString = "e" + r + ".png";
-    return retString;
+    return "e" + r + ".png";
 }
 //insert individual image (called in insert() function)
 function insertion(idName, left, top, imgName) {
@@ -46,13 +50,32 @@ function uniqueInsertion(idName) {
 }
 // onClick for repeated images
 function incorrectClick() {
-    var message = "Level: " + (numOfImages - 2) + " Try Again!";
+    var message = "Level: " + levelNum + " Try Again!";
     document.getElementById("message").innerHTML = message;
 }
 // onClick for correct answer
 function correctClick() {
-    numOfImages++;
-    var message = "Level: " + (numOfImages - 2);
+    console.log(dificulty);
+    switch (Number(dificulty)) {
+        case 0: {
+            numOfImages++;
+            break;
+        }
+        case 1: {
+            numOfImages += levelNum;
+            break;
+        }
+        case 2: {
+            numOfImages *= 2;
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    // numOfImages *= 2;
+    levelNum++;
+    var message = "Level: " + levelNum;
     document.getElementById("message").innerHTML = message;
     // delete all images
     document.getElementById("gameLeft").innerHTML = "";

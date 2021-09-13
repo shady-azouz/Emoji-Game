@@ -16,7 +16,7 @@
         <div class="col-md-4 col-sm-12 left no-margin">
           <div>
             <a href="#game"><img class="img-fluid" src="Logo.png" alt="Emoji Logo" style="max-width: 100%;"></a>
-            <a href="#game"><h1 id="test" class="title">Emoji Game</h1></a>
+            <a href="#game"><h1 class="title">Emoji Game</h1></a>
           </div>
         </div>
         <div id="game" class="col-md-8 col-sm-12 right no-margin">
@@ -31,6 +31,17 @@
               </div>
             </div>
             <h1 id="message" class="centered message">Play!</h1>
+            <table>
+              <th id="tableHead">
+                <td><h3 class="hoverable" style="color: white;
+                  padding: 10px;">Dificulty Level: <span class="hoverableinfo">
+                    <u>Dificulty 1:</u> emojis added 1 by 1<br><br>
+                    <u>Dificulty 2:</u> emojis added according to Level number<br><br>
+                    <u>Dificulty 3:</u> emojis multiplied by 2
+                  </span></h3></td>
+                <td><input type="range" id="dificulty" name="dificulty" value="0" min="0" max="2" oninput="sliderChange(this.value)"></td>
+              </th>
+            </table>
           </div>
         </div>
       </div>
